@@ -19,7 +19,8 @@ public class MyStatusLineElementProvider implements StatusLineElementProvider {
     @Override
     public Component getStatusLineElement() {
         MyStatusBar bar = new MyStatusBar();
-        bar.setText("Status: ");
+        //bar.setText("Status: ");
+        //bar.
         return bar;
     }
     

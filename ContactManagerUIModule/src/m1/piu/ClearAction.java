@@ -7,6 +7,8 @@ package m1.piu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import org.openide.DialogDisplayer;
+import org.openide.NotifyDescriptor;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
@@ -26,5 +28,16 @@ public final class ClearAction implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO implement action body
+
+        NotifyDescriptor d
+                = new NotifyDescriptor.Confirmation("Really do this?!", "Clear",
+                        NotifyDescriptor.OK_CANCEL_OPTION);
+        if (DialogDisplayer.getDefault().notify(d) == NotifyDescriptor.OK_OPTION) {
+            
+            DialogDisplayer.getDefault().notify(new NotifyDescriptor.Message("Contacts cleared successfully :)",
+                NotifyDescriptor.INFORMATION_MESSAGE));
+            
+        }
+
     }
 }

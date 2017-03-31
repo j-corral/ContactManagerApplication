@@ -7,6 +7,7 @@ package m1.piu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 import javax.swing.ProgressMonitor;
 import org.netbeans.api.progress.*;
 import org.openide.DialogDisplayer;
@@ -56,7 +57,7 @@ public final class SaveAction implements ActionListener {
                     myProgressHandle.progress("progress...", i);
                     
                     try {
-                        Thread.sleep(5);
+                        Thread.sleep(getRandomNumberInRange(1, 10));
                     } catch (InterruptedException ex) {
                         Exceptions.printStackTrace(ex);
                     }
@@ -74,6 +75,17 @@ public final class SaveAction implements ActionListener {
         RequestProcessor.Task myTask = RequestProcessor.getDefault().post(myRunnable);
 
     }
+     
+     
+    private static int getRandomNumberInRange(int min, int max) {
+
+        if (min >= max) {
+            throw new IllegalArgumentException("max must be greater than min");
+        }
+
+        Random r = new Random();
+        return r.nextInt((max - min) + 1) + min;
+    } 
 
 
 }

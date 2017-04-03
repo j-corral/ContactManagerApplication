@@ -14,47 +14,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javax.swing.JButton;
-import org.netbeans.api.settings.ConvertAsProperties;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
+import javax.swing.JPanel;
 import org.openide.util.Exceptions;
-import org.openide.windows.TopComponent;
-import org.openide.util.NbBundle.Messages;
 
-/**
- * Top component which displays something.
- */
-@ConvertAsProperties(
-        dtd = "-//m1.piu//ContactToolbarPanelfx//EN",
-        autostore = false
-)
-@TopComponent.Description(
-        preferredID = "ContactToolbarPanelfxTopComponent",
-        //iconBase="SET/PATH/TO/ICON/HERE", 
-        persistenceType = TopComponent.PERSISTENCE_ALWAYS
-)
-@TopComponent.Registration(mode = "output", openAtStartup = false)
-@ActionID(category = "Window", id = "m1.piu.ContactToolbarPanelfxTopComponent")
-@ActionReference(path = "Menu/Window" /*, position = 333 */)
-@TopComponent.OpenActionRegistration(
-        displayName = "#CTL_ContactToolbarPanelfxAction",
-        preferredID = "ContactToolbarPanelfxTopComponent"
-)
-@Messages({
-    "CTL_ContactToolbarPanelfxAction=ContactToolbarPanelfx",
-    "CTL_ContactToolbarPanelfxTopComponent=ContactToolbarPanelfx Window",
-    "HINT_ContactToolbarPanelfxTopComponent=This is a ContactToolbarPanelfx window"
-})
-public final class ContactToolbarPanelfxTopComponent extends TopComponent {
+public final class ContactFormVisualPanel2 extends JPanel {
 
-    private static JFXPanel fxPanel;
-    //private MyFXController controller;
-    
-
-    public ContactToolbarPanelfxTopComponent() {
-        
-        initComponents();
+     private static JFXPanel fxPanel;
+     
+    /**
+     * Creates new form ContactFormVisualPanel2
+     */
+    public ContactFormVisualPanel2() {
+       initComponents();
         setName(Bundle.CTL_ContactToolbarPanelfxTopComponent());
         setToolTipText(Bundle.HINT_ContactToolbarPanelfxTopComponent());
 
@@ -72,7 +43,7 @@ public final class ContactToolbarPanelfxTopComponent extends TopComponent {
  
     private void createScene() {
         try {
-            URL location = getClass().getResource("partials/FXMLContactToolBar.fxml");
+            URL location = getClass().getResource("partials/FXMLContactAddress.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(location);
             fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
@@ -85,6 +56,11 @@ public final class ContactToolbarPanelfxTopComponent extends TopComponent {
         } catch (IOException ex) {
             Exceptions.printStackTrace(ex);
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Address";
     }
 
     /**
@@ -109,25 +85,4 @@ public final class ContactToolbarPanelfxTopComponent extends TopComponent {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-    @Override
-    public void componentOpened() {
-        // TODO add custom code on component opening
-    }
-
-    @Override
-    public void componentClosed() {
-        // TODO add custom code on component closing
-    }
-
-    void writeProperties(java.util.Properties p) {
-        // better to version settings since initial version as advocated at
-        // http://wiki.apidesign.org/wiki/PropertyFiles
-        p.setProperty("version", "1.0");
-        // TODO store your settings
-    }
-
-    void readProperties(java.util.Properties p) {
-        String version = p.getProperty("version");
-        // TODO read your settings according to their version
-    }
 }

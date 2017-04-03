@@ -28,6 +28,7 @@ import org.openide.util.actions.Presenter;
 @Messages("CTL_ContactToolbar=Contact")
 public final class ContactToolbar extends AbstractAction implements Presenter.Toolbar {
 
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO implement action body

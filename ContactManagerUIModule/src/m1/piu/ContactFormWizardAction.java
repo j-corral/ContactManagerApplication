@@ -21,7 +21,7 @@ import org.openide.awt.ActionRegistration;
 // An example action demonstrating how the wizard could be called from within
 // your code. You can move the code below wherever you need, or register an action:
  @ActionID(category="File", id="m1.piu.ContactFormWizardAction")
- @ActionRegistration(displayName="Open ContactForm Wizard")
+ @ActionRegistration(displayName="Create new contact")
  @ActionReference(path="Menu/File", position=1)
 public final class ContactFormWizardAction implements ActionListener {
 
@@ -31,7 +31,7 @@ public final class ContactFormWizardAction implements ActionListener {
         panels.add(new ContactFormWizardPanel1());
         panels.add(new ContactFormWizardPanel2());
         panels.add(new ContactFormWizardPanel3());
-        panels.add(new ContactFormWizardPanel4());
+        //panels.add(new ContactFormWizardPanel4());
         String[] steps = new String[panels.size()];
         for (int i = 0; i < panels.size(); i++) {
             Component c = panels.get(i).getComponent();
@@ -49,7 +49,7 @@ public final class ContactFormWizardAction implements ActionListener {
         WizardDescriptor wiz = new WizardDescriptor(new WizardDescriptor.ArrayIterator<WizardDescriptor>(panels));
         // {0} will be replaced by WizardDesriptor.Panel.getComponent().getName()
         wiz.setTitleFormat(new MessageFormat("{0}"));
-        wiz.setTitle("...dialog title...");
+        wiz.setTitle("New contact");
         if (DialogDisplayer.getDefault().notify(wiz) == WizardDescriptor.FINISH_OPTION) {
             // do something
         }
